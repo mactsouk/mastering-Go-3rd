@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Testing a WebSocket Server</title>
+  </head>
+  <body>
+    <h2>Hello There!</h2>
+
+    <script>
+        let ws = new WebSocket("ws://localhost:1234/ws");
+        console.log("Trying to connect to server.");
+
+        ws.onopen = () => {
+            console.log("Connected!");
+            ws.send("Hello From the Client!")
+        };
+        
+        ws.onmessage = function(event) {
+          console.log(`[message] Data received from server: ${event.data}`);
+          ws.close(1000, "Work complete");
+        };
+
+        ws.onclose = event => {
+            if (event.wasClean) {
+              console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+            }
+            console.log("Socket Closed Connection: ", event);
+        };
+
+        ws.onerror = error => {
+            console.log("Socket Error: ", error);
+        };
+
+    </script>
+  </body>
+</html>

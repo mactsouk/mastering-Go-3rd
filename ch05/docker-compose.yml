@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=mtsouk
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=master
+    volumes:
+      - ./postgres:/var/lib/postgresql/data/
+    networks:
+      - psql
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres:
+
+networks:
+  psql:
+    driver: bridge

@@ -1,0 +1,7 @@
+# prometheus.yml
+scrape_configs:
+  - job_name: GoServer
+    scrape_interval: 5s
+    static_configs:
+       - targets: ['goapp:1234']
+

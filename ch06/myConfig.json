@@ -1,0 +1,10 @@
+{
+    "macos": "pass_macos",
+    "linux": "pass_linux",
+    "windows": "pass_windows",
+
+    "active": true,
+    "postgres": "machine1",
+    "mysql": "machine2",
+    "mongodb": "machine3"
+}

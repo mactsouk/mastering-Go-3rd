@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  goapp:
+    image: goapp
+    container_name: goapp
+    restart: always
+    ports:
+      - 1234:1234
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    user: "0"
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./prometheus_data/:/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    ports:
+      - 9090:9090
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    depends_on:
+      - prometheus
+    restart: always
+    user: "0"
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=helloThere
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_PANELS_DISABLE_SANITIZE_HTML=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+    networks:
+      - monitoring
+    volumes:
+      - ./grafana_data/:/var/lib/grafana/
+
+volumes:
+    grafana_data: {}
+    prometheus_data: {}
+
+networks:
+  monitoring:
+    driver: bridge

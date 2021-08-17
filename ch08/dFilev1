@@ -1,0 +1,23 @@
+# docker build -f dFilev1 -t go-app115 .
+# docker run -it -p 2345:2345 go-app115
+# WITHOUT using Go Modules
+
+FROM golang:1.15.10-alpine3.13 AS builder
+
+# Install git.
+# Git is required for fetching the dependencies.
+RUN apk update && apk add --no-cache git
+
+RUN mkdir /pro
+ADD ./samplePro.go /pro/
+WORKDIR /pro
+RUN go get -d -v ./...
+RUN go build -o server ./samplePro.go
+
+FROM alpine:latest
+
+RUN mkdir /pro
+COPY --from=builder /pro/server /pro/server
+EXPOSE 2345
+WORKDIR /pro
+CMD ["/pro/server"]
