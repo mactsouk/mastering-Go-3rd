@@ -32,7 +32,7 @@ func main() {
 	PrintSlice([]string{"a", "b", "c"})
 	PrintSlice([]float64{1.2, -2.33, 4.55})
 
-	PrintReflection([]float64{1.2, -2.33, 4.55})
 	PrintReflection([]int{1, 2, 3})
 	PrintReflection([]string{"a", "b", "c"})
+	PrintReflection([]float64{1.2, -2.33, 4.55})
 }
