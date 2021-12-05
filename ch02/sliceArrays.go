@@ -44,7 +44,8 @@ func main() {
 	// This change does not go to S0
 	a[0] = "-N1-"
 
-	// This change does not go to S12
+	// This change does go to S12
+	// Because slice S12 is still connected to array a.
 	a[1] = "-N2-"
 
 	fmt.Println("S0:", S0)
