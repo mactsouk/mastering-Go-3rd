@@ -9,7 +9,7 @@ func main() {
 	}
 	fmt.Println()
 
-	// For loop used as while loop
+	// For loop used as do-while loop
 	i := 0
 	for ok := true; ok; ok = (i != 10) {
 		fmt.Print(i*i, " ")
