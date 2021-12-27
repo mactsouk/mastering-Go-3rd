@@ -20,6 +20,11 @@ func main() {
 			continue
 		}
 
+		// As pointed out by a reader of the book:
+		//
+		// When the first argument is non-parseable, the `min/max` variables are not initialized
+		// to the first parseable argument (but to `0` by default).
+		// This would lead to bug when all the parseable arguments share the same sign.
 		if i == 1 {
 			min = n
 			max = n
