@@ -14,7 +14,7 @@ func myPrint(start, finish int) {
 }
 
 func main() {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 4; i++ {
 		go myPrint(i, 5)
 	}
 	time.Sleep(time.Second)
