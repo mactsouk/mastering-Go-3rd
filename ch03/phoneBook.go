@@ -160,7 +160,6 @@ func main() {
 		fmt.Println("Creating", CSVFILE)
 		f, err := os.Create(CSVFILE)
 		if err != nil {
-			f.Close()
 			fmt.Println(err)
 			return
 		}
