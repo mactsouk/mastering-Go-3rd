@@ -25,8 +25,8 @@ func wordByWord(file string) error {
 			return err
 		}
 
-		r := regexp.MustCompile("[^\\s]+")
-		words := r.FindAllString(line, -1)
+		re := regexp.MustCompile("[^\\s]+")
+		words := re.FindAllString(line, -1)
 		for i := 0; i < len(words); i++ {
 			fmt.Println(words[i])
 		}
