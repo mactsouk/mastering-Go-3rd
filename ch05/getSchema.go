@@ -52,13 +52,13 @@ func main() {
 	for rows.Next() {
 		var name string
 		err = rows.Scan(&name)
+		defer rows.Close()
 		if err != nil {
 			fmt.Println("Scan", err)
 			return
 		}
 		fmt.Println("*", name)
 	}
-	defer rows.Close()
 
 	// Get all tables from __current__ database
 	query := `SELECT table_name FROM information_schema.tables WHERE 
