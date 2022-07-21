@@ -30,7 +30,7 @@ func lineByLine(file string) error {
 
 func main() {
 	args := os.Args
-	if len(args) == 0 {
+	if len(args) == 1 {
 		fmt.Printf("usage: byWord <file1> [<file2> ...]\n")
 		return
 	}
