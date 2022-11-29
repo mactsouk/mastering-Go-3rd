@@ -81,7 +81,7 @@ func main() {
 	switch arguments[1] {
 	case "search":
 		if len(arguments) != 3 {
-			fmt.Println("Usage: search Surname")
+			fmt.Println("Usage: search Tel number")
 			return
 		}
 		temp := search(arguments[2])
