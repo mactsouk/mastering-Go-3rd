@@ -23,7 +23,7 @@ func main() {
 	case 2:
 		fmt.Println("Usage: ./randomNumbers MIN MAX TOTAL SEED")
 		t, err := strconv.Atoi(arguments[1])
-		if err != nil {
+		if err == nil {
 			MIN = t
 			MAX = MIN + 100
 		}
