@@ -48,6 +48,7 @@ func (a *ar2x2) Multiply(b ar2x2) {
 }
 
 func main() {
+
 	if len(os.Args) != 9 {
 		fmt.Println("Need 8 integers")
 		return
