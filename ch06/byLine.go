@@ -21,7 +21,7 @@ func lineByLine(file string) error {
 			break
 		} else if err != nil {
 			fmt.Printf("error reading file %s", err)
-			break
+			return err
 		}
 		fmt.Print(line)
 	}
