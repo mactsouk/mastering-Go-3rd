@@ -11,7 +11,7 @@ var visited = map[string]int{}
 func walkFunction(path string, info os.FileInfo, err error) error {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	fileInfo, _ = os.Lstat(path)
@@ -39,7 +39,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 
 		newPath, err := filepath.EvalSymlinks(temp)
 		if err != nil {
-			return nil
+			return err
 		}
 
 		linkFileInfo, err := os.Stat(newPath)
