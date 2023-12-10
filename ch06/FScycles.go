@@ -58,11 +58,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 			}
 			visited[abs]++
 
-			err = filepath.Walk(newPath, walkFunction)
-			if err != nil {
-				return err
-			}
-			return nil
+			return filepath.Walk(newPath, walkFunction)
 		}
 	}
 	return nil
