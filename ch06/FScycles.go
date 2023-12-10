@@ -30,7 +30,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 	}
 
 	// Find symbolic links to directories
-	if fileInfo.Mode()&os.ModeSymlink != 0 {
+	if mode&os.ModeSymlink != 0 {
 		temp, err := os.Readlink(path)
 		if err != nil {
 			fmt.Println("os.Readlink():", err)
