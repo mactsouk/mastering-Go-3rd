@@ -11,7 +11,7 @@ var visited = map[string]int{}
 func walkFunction(path string, info os.FileInfo, err error) error {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	fileInfo, _ = os.Lstat(path)
@@ -30,7 +30,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 	}
 
 	// Find symbolic links to directories
-	if fileInfo.Mode()&os.ModeSymlink != 0 {
+	if mode&os.ModeSymlink != 0 {
 		temp, err := os.Readlink(path)
 		if err != nil {
 			fmt.Println("os.Readlink():", err)
@@ -39,7 +39,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 
 		newPath, err := filepath.EvalSymlinks(temp)
 		if err != nil {
-			return nil
+			return err
 		}
 
 		linkFileInfo, err := os.Stat(newPath)
@@ -58,11 +58,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 			}
 			visited[abs]++
 
-			err = filepath.Walk(newPath, walkFunction)
-			if err != nil {
-				return err
-			}
-			return nil
+			return filepath.Walk(newPath, walkFunction)
 		}
 	}
 	return nil
