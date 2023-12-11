@@ -44,11 +44,7 @@ func search(f embed.FS) error {
 }
 
 func extract(f embed.FS, filepath string) ([]byte, error) {
-	s, err := fs.ReadFile(f, filepath)
-	if err != nil {
-		return nil, err
-	}
-	return s, nil
+	return fs.ReadFile(f, filepath)
 }
 
 func writeToFile(s []byte, path string) error {
@@ -92,7 +88,7 @@ func main() {
 	}
 
 	// Save it to an actual file
-	writeToFile(buffer, "/tmp/IOFS.txt")
+	err = writeToFile(buffer, "/tmp/IOFS.txt")
 	if err != nil {
 		fmt.Println(err)
 		return
