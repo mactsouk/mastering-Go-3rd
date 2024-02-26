@@ -17,15 +17,15 @@ func Test_matchInt(t *testing.T) {
 	}
 
 	if matchInt("00") == false {
-		t.Error(`matchInt("00") != true`)
+		t.Error(`matchInt("00") != false`)
 	}
 
 	if matchInt("-00") == false {
-		t.Error(`matchInt("-00") != true`)
+		t.Error(`matchInt("-00") != false`)
 	}
 
 	if matchInt("+00") == false {
-		t.Error(`matchInt("+00") != true`)
+		t.Error(`matchInt("+00") != false`)
 	}
 }
 
