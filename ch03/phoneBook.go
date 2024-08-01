@@ -131,6 +131,7 @@ func search(key string) *Entry {
 		return nil
 	}
 	data[i].LastAccess = strconv.FormatInt(time.Now().Unix(), 10)
+	_ = saveCSVFile(CSVFILE)
 	return &data[i]
 }
 
