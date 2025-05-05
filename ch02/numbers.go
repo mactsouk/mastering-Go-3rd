@@ -19,11 +19,11 @@ func main() {
 
 	x := 12
 	k := 5
-	fmt.Println(x)
+	fmt.Println("x:", x)
 	fmt.Printf("Type of x: %T\n", x)
 
 	div := x / k
-	fmt.Println("div", div)
+	fmt.Println("div:", div)
 
 	var m, n float64
 	m = 1.223
@@ -33,6 +33,6 @@ func main() {
 	fmt.Println("y:", y)
 
 	divFloat := float64(x) / float64(k)
-	fmt.Println("divFloat", divFloat)
+	fmt.Println("divFloat:", divFloat)
 	fmt.Printf("Type of divFloat: %T\n", divFloat)
 }
